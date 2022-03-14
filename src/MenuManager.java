@@ -8,5 +8,5 @@ public class MenuManager {
 		System.out.println("4. Check details");
 		System.out.println("5. Exit");
 	}
-
+	
 }
