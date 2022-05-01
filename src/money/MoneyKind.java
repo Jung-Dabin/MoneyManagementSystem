@@ -5,4 +5,3 @@ public enum MoneyKind {
 	CreditCard,
 	SendMoney
 }
-
