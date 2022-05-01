@@ -1,1 +1,2 @@
 # MoneyManagementSystem
+author: Jung-Dabin
