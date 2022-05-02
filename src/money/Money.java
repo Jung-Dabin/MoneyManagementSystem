@@ -13,12 +13,24 @@ public class Money {
 	public Money() {
 	}
 	
+	public Money(MoneyKind kind) {
+		this.kind = kind;
+	}
+	
 	public Money(int date, int time) {
 		this.Date = date;
 		this.Time = time;
 	}
 	
 	public Money(int date, int time, String placeofuse, int amountofmoney) {
+		this.Date = date;
+		this.Time = time;
+		this.PlaceofUse = placeofuse;
+		this.AmountofMoney = amountofmoney;
+	}
+	
+	public Money(MoneyKind kind, int date, int time, String placeofuse, int amountofmoney) {
+		this.kind = kind;
 		this.Date = date;
 		this.Time = time;
 		this.PlaceofUse = placeofuse;
@@ -69,7 +81,23 @@ public class Money {
 	
 	// printInfo() 메소드
 	public void printInfo() {
-		System.out.println("Date: " + Date + " Time: " + Time + " Place of Use: " + PlaceofUse + " Amount of Money: " + AmountofMoney);
+		String skind = "none";
+		switch(this.kind) {
+		case Cash:
+			skind = "Cash.";
+			break;
+		case CreditCard:
+			skind = "Card.";
+			break;
+		case SendMoney:
+			skind = "Send.";
+			break;
+		case SamsungPay:
+			skind = "Pay.";
+			break;
+		default:
+		}
+		System.out.println("kind:" + skind + " Date:" + Date + " Time:" + Time + " Place of Use:" + PlaceofUse + " Amount of Money:" + AmountofMoney);
 	}
 	
 	//getUserInput() 메소드, 사용자가 입력하는 값 저장

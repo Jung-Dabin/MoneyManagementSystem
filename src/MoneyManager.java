@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 import money.CreditCardMoney;
 import money.Money;
+import money.MoneyKind;
+import money.SamsungPayMoney;
 
 public class MoneyManager {
 	ArrayList<Money> moneys = new ArrayList<Money>(); //ArrayList 생성하여 메모리 공간 할당
@@ -17,26 +19,33 @@ public class MoneyManager {
 		int kind = 0;
 		Money money;
 		while (kind != 1 && kind != 2) {
-			System.out.print("1 for Cash");
-			System.out.print("2 for Credit Card");
-			System.out.print("Select num for Money Kind between 1 and 2: ");
+			System.out.println("1 for Cash");
+			System.out.println("2 for Credit Card");
+			System.out.println("3 for Samsung Pay");
+			System.out.print("Select num 1, 2, or 3 for Money Kind:");
 
 			//사용자의 Cash, CreditCard 선택에 따라 실행
 			kind = input.nextInt();
 			if (kind == 1) {
-				money = new Money();
+				money = new Money(MoneyKind.Cash);
 				money.getUserInput(input);
 				moneys.add(money);
 				break;
 			}
 			else if (kind == 2) {
-				money = new CreditCardMoney();
+				money = new CreditCardMoney(MoneyKind.CreditCard);
+				money.getUserInput(input);
+				moneys.add(money);
+				break;
+			}
+			else if (kind == 3) {
+				money = new SamsungPayMoney(MoneyKind.SamsungPay);
 				money.getUserInput(input);
 				moneys.add(money);
 				break;
 			}
 			else {
-				System.out.print("Select num for Money Kind between 1 and 2: ");
+				System.out.print("Select num 1, 2, or 3 for Money Kind:");
 			}
 		}
 	}
@@ -100,7 +109,7 @@ public class MoneyManager {
 						String placeofuse = input.next();
 						money.setPlaceofUse(placeofuse);
 					}
-					else if (num == 2) {
+					else if (num == 4) {
 						System.out.print("AmountofMoney: ");
 						int amountofmoney = input.nextInt();
 						money.setAmountofMoney(amountofmoney);
