@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import money.CashMoney;
 import money.CreditCardMoney;
 import money.Money;
+import money.MoneyInput;
 import money.MoneyKind;
 import money.SamsungPayMoney;
 
 public class MoneyManager {
-	ArrayList<Money> moneys = new ArrayList<Money>(); //ArrayList 생성하여 메모리 공간 할당
+	ArrayList<MoneyInput> moneys = new ArrayList<MoneyInput>(); //ArrayList 생성하여 메모리 공간 할당
 	
 	Scanner input;	
 	MoneyManager(Scanner input) {
@@ -17,7 +19,7 @@ public class MoneyManager {
 	//addSpend() 메소드
 	public void addSpend() {
 		int kind = 0;
-		Money money;
+		MoneyInput moneyInput;
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Cash");
 			System.out.println("2 for Credit Card");
@@ -27,21 +29,22 @@ public class MoneyManager {
 			//사용자의 Cash, CreditCard 선택에 따라 실행
 			kind = input.nextInt();
 			if (kind == 1) {
-				money = new Money(MoneyKind.Cash);
-				money.getUserInput(input);
-				moneys.add(money);
+				moneyInput = new CashMoney(MoneyKind.Cash);
+				
+				moneyInput.getUserInput(input);
+				moneys.add(moneyInput);
 				break;
 			}
 			else if (kind == 2) {
-				money = new CreditCardMoney(MoneyKind.CreditCard);
-				money.getUserInput(input);
-				moneys.add(money);
+				moneyInput = new CreditCardMoney(MoneyKind.CreditCard);
+				moneyInput.getUserInput(input);
+				moneys.add(moneyInput);
 				break;
 			}
 			else if (kind == 3) {
-				money = new SamsungPayMoney(MoneyKind.SamsungPay);
-				money.getUserInput(input);
-				moneys.add(money);
+				moneyInput = new SamsungPayMoney(MoneyKind.SamsungPay);
+				moneyInput.getUserInput(input);
+				moneys.add(moneyInput);
 				break;
 			}
 			else {
@@ -80,8 +83,8 @@ public class MoneyManager {
 		System.out.print("Date: ");
 		int Date = input.nextInt();
 		for (int i = 0; i<moneys.size(); i++) {
-			Money money = moneys.get(i);
-			if (money.getDate() == Date) {
+			MoneyInput moneyInput = moneys.get(i);
+			if (moneyInput.getDate() == Date) {
 				int num = -1;
 				while(num !=5) {
 					System.out.println("** Money Info Edit Menu **");
@@ -97,22 +100,22 @@ public class MoneyManager {
 					if (num == 1) {
 						System.out.print("Date: ");
 						int date = input.nextInt();
-						money.setDate(date);
+						moneyInput.setDate(date);
 					}
 					else if (num == 2) {
 						System.out.print("Time: ");
 						int time = input.nextInt();
-						money.setTime(time);
+						moneyInput.setTime(time);
 					}
 					else if (num == 3) {
 						System.out.print("PlaceofUse: ");
 						String placeofuse = input.next();
-						money.setPlaceofUse(placeofuse);
+						moneyInput.setPlaceofUse(placeofuse);
 					}
 					else if (num == 4) {
 						System.out.print("AmountofMoney: ");
 						int amountofmoney = input.nextInt();
-						money.setAmountofMoney(amountofmoney);
+						moneyInput.setAmountofMoney(amountofmoney);
 					}
 					else {
 						continue;

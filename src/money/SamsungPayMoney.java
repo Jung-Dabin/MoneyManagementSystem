@@ -2,7 +2,7 @@ package money;
 
 import java.util.Scanner;
 
-public class SamsungPayMoney extends Money { //Money 클래스를 부모 클래스로 상속 받는 SamsungPayMoney 클래스
+public class SamsungPayMoney extends Money implements MoneyInput { //Money 클래스를 부모 클래스로 상속 받는 SamsungPayMoney 클래스
 
 	protected String PlaceofApproval;
 	protected int AmountofPayment;
@@ -11,7 +11,7 @@ public class SamsungPayMoney extends Money { //Money 클래스를 부모 클래스로 상속
 		super(kind);
 	}
 	
-	// 메소드 오버라이드: Money 클래스의 getUserInput() 메소드
+	// getUserInput() 메소드
 	public void getUserInput(Scanner input) {
 		System.out.print("Date:");
 		int date = input.nextInt();
@@ -46,7 +46,7 @@ public class SamsungPayMoney extends Money { //Money 클래스를 부모 클래스로 상속
 		this.setAmountofMoney(amountofmoney);
 	}
 	
-	// 메소드 오버라이드: Money 클래스의 printInfo() 메소드
+	// printInfo() 메소드
 	public void printInfo() {
 		String skind = "none";
 		switch(this.kind) {
