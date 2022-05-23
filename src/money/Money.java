@@ -2,7 +2,9 @@ package money;
 
 import java.util.Scanner;
 
-public abstract class Money { // abstract: Money라는 객체를 생성하지 않는다는 뜻
+import exception.PlaceFormatException;
+
+public abstract class Money implements MoneyInput { // abstract: Money라는 객체를 생성하지 않는다는 뜻
 	protected MoneyKind kind = MoneyKind.Cash;
 	protected int Date;
 	protected int Time;
@@ -65,7 +67,10 @@ public abstract class Money { // abstract: Money라는 객체를 생성하지 않는다는 뜻
 		return PlaceofUse;
 	}
 
-	public void setPlaceofUse(String placeofUse) {
+	public void setPlaceofUse(String placeofUse) throws PlaceFormatException {
+		if (!placeofUse.contains("-") && !placeofUse.equals("")) {
+			throw new PlaceFormatException();
+		}
 		PlaceofUse = placeofUse;
 	}
 
@@ -78,4 +83,56 @@ public abstract class Money { // abstract: Money라는 객체를 생성하지 않는다는 뜻
 	}
 	
 	public abstract void printInfo();
+	
+	public void setDate(Scanner input) {
+		System.out.print("Date: ");
+		int date = input.nextInt();
+		this.setDate(date);
+	}
+	
+	public void setTime(Scanner input) {
+		System.out.print("Time: ");
+		int time = input.nextInt();
+		this.setTime(time);
+	}
+	
+	public void setPlaceofUse(Scanner input) {
+		String placeofuse = "";
+		while(!placeofuse.contains("-")) {
+			System.out.print("PlaceofUse: ");
+			placeofuse = input.next();
+			try {
+				this.setPlaceofUse(placeofuse);
+			}
+			catch (PlaceFormatException e) {
+				System.out.println("Incorrect Place Format. put the place of use that contains -");
+			}
+		}
+	}
+	
+	public void setAmountofMoney(Scanner input) {
+		System.out.print("AmountofMoney: ");
+		int amountofmoney = input.nextInt();
+		this.setAmountofMoney(amountofmoney);
+	}
+	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Cash:
+			skind = "Cash.";
+			break;
+		case CreditCard:
+			skind = "Card.";
+			break;
+		case SendMoney:
+			skind = "Send.";
+			break;
+		case SamsungPay:
+			skind = "Pay.";
+			break;
+		default:
+		}
+		return skind;
+	}
 }
