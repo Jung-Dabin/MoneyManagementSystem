@@ -1,10 +1,16 @@
 package money;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.PlaceFormatException;
 
-public abstract class Money implements MoneyInput { // abstract: Money라는 객체를 생성하지 않는다는 뜻
+public abstract class Money implements MoneyInput, Serializable { // abstract: Money라는 객체를 생성하지 않는다는 뜻
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3546846093255094463L;
+	
 	protected MoneyKind kind = MoneyKind.Cash;
 	protected int Date;
 	protected int Time;

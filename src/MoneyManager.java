@@ -1,18 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import money.CashMoney;
 import money.CreditCardMoney;
-import money.Money;
 import money.MoneyInput;
 import money.MoneyKind;
 import money.SamsungPayMoney;
 
-public class MoneyManager {
+public class MoneyManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 882617571732037143L;
+
 	ArrayList<MoneyInput> moneys = new ArrayList<MoneyInput>(); //ArrayList 생성하여 메모리 공간 할당
-	
-	Scanner input;	
+	transient Scanner input; // transient: 저장하고 싶지 않음을 뜻함
 	MoneyManager(Scanner input) {
 		this.input = input;
 	}
