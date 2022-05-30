@@ -3,7 +3,7 @@ package money;
 import java.util.Scanner;
 
 public class CashMoney extends Money {
-	
+
 	public CashMoney(MoneyKind kind) {
 		super(kind);
 	}

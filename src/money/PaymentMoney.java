@@ -5,7 +5,7 @@ import java.util.Scanner;
 import exception.PlaceFormatException;
 
 public abstract class PaymentMoney extends Money {
-	
+
 	public PaymentMoney(MoneyKind kind) {
 		super(kind);
 	}
