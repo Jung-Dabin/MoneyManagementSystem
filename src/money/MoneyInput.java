@@ -10,9 +10,15 @@ public interface MoneyInput {
 	
 	public void setDate(int date);
 	
+	public int getTime();
+	
 	public void setTime(int time);
 	
+	public String getPlaceofUse();
+	
 	public void setPlaceofUse(String placeofUse) throws PlaceFormatException;
+	
+	public int getAmountofMoney();
 	
 	public void setAmountofMoney(int amountofMoney);
 	

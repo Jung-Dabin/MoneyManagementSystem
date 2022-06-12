@@ -1,4 +1,2 @@
-5월 23, 2022 9:59:57 오후 log.EventLogger log
-정보: add a spend
-5월 23, 2022 10:00:01 오후 log.EventLogger log
+6월 07, 2022 10:26:44 오후 log.EventLogger log
 정보: check a list of spend

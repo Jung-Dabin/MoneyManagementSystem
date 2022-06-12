@@ -1,3 +1,5 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +7,7 @@ import java.util.Scanner;
 
 import money.CashMoney;
 import money.CreditCardMoney;
+import money.Money;
 import money.MoneyInput;
 import money.MoneyKind;
 import money.SamsungPayMoney;
@@ -139,6 +142,14 @@ public class MoneyManager implements Serializable {
 		for (int i = 0; i<moneys.size(); i++) {
 			moneys.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return moneys.size();
+	}
+	
+	public MoneyInput get(int index) {
+		return (Money) moneys.get(index);
 	}
 	
 	public void showEditMenu() {
