@@ -80,7 +80,6 @@ public class MenuManager {
 	
 	public static MoneyManager getObject(String filename) {
 		MoneyManager moneyManager = null;
-		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
@@ -98,7 +97,6 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return moneyManager;
 	}
 	

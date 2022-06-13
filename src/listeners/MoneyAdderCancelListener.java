@@ -8,18 +8,18 @@ import javax.swing.JButton;
 import gui.MoneyAdder;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class MoneyAdderCancelListener implements ActionListener {
 	
 	WindowFrame frame;
 
-	public ButtonAddListener(WindowFrame frame) {
+	public MoneyAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getMoneyadder());
+		frame.getContentPane().add(frame.getMenuselection());
 		frame.revalidate();
 		frame.repaint();
 	}

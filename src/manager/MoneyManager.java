@@ -24,6 +24,16 @@ public class MoneyManager implements Serializable {
 		this.input = input;
 	}
 
+	public void addSpend(int Date, int Time, String PlaceofUse, int AmountofMoney) {
+		MoneyInput moneyInput = new CashMoney(MoneyKind.Cash);
+		moneyInput.getUserInput(input);
+		moneys.add(moneyInput);
+	}
+	
+	public void addSpend(MoneyInput moneyInput) {
+		moneys.add(moneyInput);
+	}
+	
 	//addSpend() 메소드
 	public void addSpend() {
 		int kind = 0;
@@ -39,7 +49,6 @@ public class MoneyManager implements Serializable {
 				kind = input.nextInt();
 				if (kind == 1) {
 					moneyInput = new CashMoney(MoneyKind.Cash);
-					
 					moneyInput.getUserInput(input);
 					moneys.add(moneyInput);
 					break;

@@ -6,12 +6,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listeners.MoneyAdderCancelListener;
+import listeners.MoneyAdderListener;
+import manager.MoneyManager;
+
 public class MoneyAdder extends JPanel {
 	
 	WindowFrame frame;
+	MoneyManager moneyManager;
 	
-	public MoneyAdder(WindowFrame frame) {
+	public MoneyAdder(WindowFrame frame, MoneyManager moneyManager) {
 		this.frame = frame;
+		this.moneyManager = moneyManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -41,11 +47,18 @@ public class MoneyAdder extends JPanel {
 		JLabel labelAmountofMoney = new JLabel("AmountofMoney: ", JLabel.TRAILING);
 		JTextField fieldAmountofMoney = new JTextField(10);
 		labelAmountofMoney.setLabelFor(fieldAmountofMoney);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new MoneyAdderListener(fieldDate, fieldTime, fieldPlaceofUse, fieldAmountofMoney, moneyManager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new MoneyAdderCancelListener(frame));
+		
 		panel.add(labelAmountofMoney);
 		panel.add(fieldAmountofMoney);
 		
-		panel.add(new JButton("save")); // save 버튼
-		panel.add(new JButton("cancle")); // cancle 버튼
+		panel.add(saveButton); // save 버튼
+		panel.add(cancelButton); // cancel 버튼
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
